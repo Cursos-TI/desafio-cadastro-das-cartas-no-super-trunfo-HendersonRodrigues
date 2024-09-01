@@ -13,9 +13,11 @@ int main() {
     int populacao = 1;
     int area = 1;
     int pib = 1;
+    int numero_de_pontos_turisticos = 1;
+
 
     printf("Entre com o nome da primeira cidade: \n");
-    scanf("%s", &nome_da_cidade);
+    fgets(nome_da_cidade, 50, stdin);                   // Corrige a entra com espaço
 
     printf("Entre com o codigo da primeira cidade: \n");
     scanf("%s", &Codigo_da_cidade);
@@ -23,18 +25,21 @@ int main() {
     printf("Entre com a população da primeira cidade em mil habitantes: \n");
     scanf("%d", &populacao);
   
-    printf("Entre com a área da primeira cidade em m2: \n");
+    printf("Entre com a área da primeira cidade em km2: \n");
     scanf("%d", &area);
  
     printf("Entre com o PIB da primeira cidade em reais: \n");
     scanf("%d", &pib);
 
-    printf("A cidade cadastrada foi: %s\n", nome_da_cidade);
+    printf("Entre com o numero de pontos turisticos da primeira cidade: \n");
+    scanf("%d", &numero_de_pontos_turisticos);
+
+    printf("A cidade cadastrada foi: %s", nome_da_cidade);
     printf("O codgio cadastrado foi: %s\n", Codigo_da_cidade);
     printf("A população cadastrada foi: %d\n", populacao);
     printf("A area cadastrada foi: %d\n", area);
     printf("O PIB cadastrado foi: %d\n", pib);
-
+    printf("O PIB cadastrado foi: %d\n", numero_de_pontos_turisticos);
 
     // Cadastro das Cartas:
     // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
