@@ -12,12 +12,12 @@ int main() {
     char Codigo_da_cidade [4] = "A01";
     int populacao = 1;
     int area = 1;
-    int pib = 1;
-    int numero_de_pontos_turisticos = 1;
+    int pib = 0;
+    int numero_de_pontos_turisticos = 0;
 
 
     printf("Entre com o nome da primeira cidade: \n");
-    fgets(nome_da_cidade, 50, stdin);                   // Corrige a entra com espaço
+    fgets(nome_da_cidade, 50, stdin);                   // Corrige a entrada com espaço
 
     printf("Entre com o codigo da primeira cidade: \n");
     scanf("%s", &Codigo_da_cidade);
@@ -41,8 +41,6 @@ int main() {
     printf("O PIB cadastrado foi: %d\n", pib);
     printf("O PIB cadastrado foi: %d\n", numero_de_pontos_turisticos);
 
-
-
     // Cadastro das Cartas:
     // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
     // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
@@ -50,8 +48,6 @@ int main() {
     // Exibição dos Dados das Cartas:
     // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
     // Exiba os valores inseridos para cada atributo da cidade, um por linha.
-
-
 
     return 0;
 }
