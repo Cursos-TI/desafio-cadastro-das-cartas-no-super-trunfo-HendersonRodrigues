@@ -25,16 +25,19 @@ int main() {
         printf("2 - Entender como jogar\n");
         printf("3 - Sair do jogo\n");
         scanf("%d", &escolha);
+        getchar();
 
         switch (escolha) {
         case 1:
             printf("Quantas cidades você quer cadastrar? (máximo 32)\n");
             scanf("%d", &quantas_cidades);
+            getchar();
             
             // Verifica se o número de cidades está dentro do limite
             while (quantas_cidades < 1 || quantas_cidades > 32) {
                 printf("Por favor, insira um número entre 1 e 32.\n");
                 scanf("%d", &quantas_cidades);
+                getchar();
             }
             
             cartas(quantas_cidades, nome_da_cidade, codigo_da_cidade, densidade, pib, area, populacao, pib_per_capita, pontos_turisticos);
@@ -43,15 +46,17 @@ int main() {
             char jogar;
             printf("Você gostaria de jogar agora? (s/n)\n");
             scanf(" %c", &jogar);
+            getchar();
             if (jogar == 's' || jogar == 'S') {
                 do {
                     comparar_cartas(quantas_cidades, nome_da_cidade, codigo_da_cidade, densidade, pib, area, populacao, pib_per_capita, pontos_turisticos);
                     char jogar_novamente;
                     printf("Gostaria de jogar outra vez? (s/n)\n");
                     scanf(" %c", &jogar_novamente);
+                    getchar(); 
                     if (jogar_novamente != 's' && jogar_novamente != 'S') {
                         printf("Você pode jogar mais tarde. Volte sempre!\n");
-                        break; // Sai do loop se o usuário não quiser jogar novamente
+                        break;
                     }
                 } while (1); // Loop infinito até o usuário decidir sair
             } else {
@@ -77,22 +82,32 @@ int main() {
 void cartas(int quantas_cidades, char nome_da_cidade[][50], char codigo_da_cidade[][4], float densidade[], float pib[], float area[], float populacao[], float pib_per_capita[], int pontos_turisticos[]) {
     for (int posicao_matriz = 0; posicao_matriz < quantas_cidades; posicao_matriz++) {
         printf("\nEntre com o nome da cidade: \n");
-        scanf("%s", nome_da_cidade[posicao_matriz]);
+        fgets(nome_da_cidade[posicao_matriz], sizeof(nome_da_cidade[posicao_matriz]), stdin);
+        
+        // Remove a nova linha do final do nome da cidade, se existir
+        nome_da_cidade[posicao_matriz][strcspn(nome_da_cidade[posicao_matriz], "\n")] = '\0';
 
         printf("Entre com o código da cidade: \n");
-        scanf("%s", codigo_da_cidade[posicao_matriz]);
+        fgets(codigo_da_cidade[posicao_matriz], sizeof(codigo_da_cidade[posicao_matriz]), stdin);
+        
+        // Remove a nova linha do final do código da cidade, se existir
+        codigo_da_cidade[posicao_matriz][strcspn(codigo_da_cidade[posicao_matriz], "\n")] = '\0';
 
         printf("Entre com a população da cidade em mil habitantes: \n");
         scanf("%f", &populacao[posicao_matriz]);
+        getchar();
 
         printf("Entre com a área da cidade em km²: \n");
         scanf("%f", &area[posicao_matriz]);
+        getchar();
 
         printf("Entre com o PIB da cidade em reais: \n");
         scanf("%f", &pib[posicao_matriz]);
+        getchar();
 
         printf("Entre com o número de pontos turísticos da cidade: \n");
         scanf("%d", &pontos_turisticos[posicao_matriz]);
+        getchar();
 
         densidade[posicao_matriz] = populacao[posicao_matriz] / area[posicao_matriz];
         pib_per_capita[posicao_matriz] = pib[posicao_matriz] / populacao[posicao_matriz]; // Cálculo do PIB per capita
