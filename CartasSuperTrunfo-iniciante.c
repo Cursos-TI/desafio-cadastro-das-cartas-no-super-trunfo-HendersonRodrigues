@@ -8,45 +8,50 @@
 // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
     
 int main() {
-    char nome_da_cidade [50] = "Acre";
-    char codigo_da_cidade [4] = "A01";
-    float populacao = 1;
-    float area = 1;
-    float pib = 0;
-    int numero_de_pontos_turisticos = 0;
-    float densidade;
-    float per_capita;
+    int posicao_matriz = 1;
+    char nome_da_cidade [32][50] = {0, "Acre"};
+    char codigo_da_cidade [32][4] = {0, "A01"};
+    float populacao [32];
+    float area [32];
+    float pib [32];
+    int numero_de_pontos_turisticos [32];
+    float densidade [32];
+    float per_capita [32];
 
-    printf("Entre com o nome da primeira cidade: \n");
-    fgets(nome_da_cidade, 50, stdin);                   // Corrige a entrada com espaço
+    for(posicao_matriz=1; posicao_matriz<32; posicao_matriz++){
+        printf("Entre com o nome da cidade: \n");
+        fgets(nome_da_cidade[posicao_matriz], 50, stdin);                   // Corrige a entrada com espaço
 
-    printf("Entre com o codigo da primeira cidade: \n");
-    scanf("%s", codigo_da_cidade);
-  
-    printf("Entre com a população da primeira cidade em mil habitantes: \n");
-    scanf("%f", &populacao);
-  
-    printf("Entre com a área da primeira cidade em km2: \n");
-    scanf("%f", &area);
- 
-    printf("Entre com o PIB da primeira cidade em reais: \n");
-    scanf("%f", &pib);
+        printf("Entre com o codigo da cidade: \n");
+        scanf("%s", codigo_da_cidade[posicao_matriz]);
+    
+        printf("Entre com a população da cidade em mil habitantes: \n");
+        scanf("%f", &populacao[posicao_matriz]);
+    
+        printf("Entre com a área da cidade em km2: \n");
+        scanf("%f", &area[posicao_matriz]);
+    
+        printf("Entre com o PIB da cidade em reais: \n");
+        scanf("%f", &pib[posicao_matriz]);
 
-    printf("Entre com o numero de pontos turisticos da primeira cidade: \n");
-    scanf("%d", &numero_de_pontos_turisticos);
+        printf("Entre com o numero de pontos turisticos da cidade: \n");
+        scanf("%d", &numero_de_pontos_turisticos[posicao_matriz]);
+        
+        densidade[posicao_matriz] = populacao[posicao_matriz]/area[posicao_matriz];
+        per_capita[posicao_matriz] = pib[posicao_matriz]/populacao[posicao_matriz];
 
-    densidade = populacao/area;
-    per_capita = pib/populacao;
+    }
+    
+    for(posicao_matriz=1; posicao_matriz<32;posicao_matriz++){
+        printf("A cidade %s cadastrada foi: %s", codigo_da_cidade[posicao_matriz], nome_da_cidade[posicao_matriz]);
+        printf("A população da cidade %s cadastrada foi: %.0f\n", codigo_da_cidade[posicao_matriz], populacao[posicao_matriz]);
+        printf("A area da cidade %s cadastrada foi: %.0f\n", codigo_da_cidade[posicao_matriz], area[posicao_matriz]);
+        printf("O PIB da cidade %s cadastrado foi: %.0f\n", codigo_da_cidade[posicao_matriz], pib[posicao_matriz]);
+        printf("O número de pontos turisticos da cidade %s cadastrados foi: %d\n", codigo_da_cidade[posicao_matriz], numero_de_pontos_turisticos[posicao_matriz]);
+        printf("A densidade populacional da cidade %s é: %.2f\n", codigo_da_cidade[posicao_matriz], densidade[posicao_matriz]);
+        printf("A renda per cápita da cidade %s é: %.2f\n", codigo_da_cidade[posicao_matriz], per_capita[posicao_matriz]);
 
-    printf("A cidade cadastrada foi: %s", nome_da_cidade);
-    printf("O codgio cadastrado foi: %s\n", codigo_da_cidade);
-    printf("A população cadastrada foi: %.0f\n", populacao);
-    printf("A area cadastrada foi: %.0f\n", area);
-    printf("O PIB cadastrado foi: %.0f\n", pib);
-    printf("O número de pontos turisticos cadastrados foi: %d\n", numero_de_pontos_turisticos);
-    printf("A densidade populacional é: %.2f\n", densidade);
-    printf("A renda per cápita é: %.2f\n", per_capita);
-
+    }
 
     // Cadastro das Cartas:
     // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
