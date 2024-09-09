@@ -8,22 +8,57 @@
 // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
     
 int main() {
-    int posicao_matriz = 1;
-    char nome_da_cidade [32][50] = {0, "Acre"};
-    char codigo_da_cidade [32][4] = {0, "A01"};
-    float populacao [32];
-    float area [32];
-    float pib [32];
-    int numero_de_pontos_turisticos [32];
-    float densidade [32];
-    float per_capita [32];
+    int quantas_cidades = 1;
+    int escolha = 1;
 
-    for(posicao_matriz=1; posicao_matriz<32; posicao_matriz++){
+    printf("Bem vindo ao jogo Super Trunfo, escolha umas das opções:\n");
+    printf("1 - Criar cartas do jogo\n2 - Entender como jogar\n3 - Sair do jogo\n");
+    scanf("%d", &escolha);
+
+    switch (escolha)
+    {
+    case 1:
+        cartas();
+        break;
+    case 2:
+        printf("O jogo tem 32 cartas de cidades classificadas com codigos de A a H com numeração de 01 a 04\nVoce precisa cadastrar
+        as cartas para poder começar\nCada cidade terá algumas caracteristicas que serão depois comparadas\n
+        Apos o cadastro das cartas voce poderá rodar a escolha da carta de cada jogador e assim saber quem ganhou\n\n\n");
+        
+        printf("Escolha umas das opções:\n");
+        printf("1 - Criar cartas do jogo\n2 - Entender como jogar\n3 - Sair do jogo\n");
+        scanf("%d", &escolha);
+        
+        break;
+    case 3:
+        exit(0);
+        break;
+    default:
+        printf("Escolha um número entre 1 e 3");
+        break;
+    }
+    printf("Quantas cidades voce quer cadastrar?\n");
+    scanf("%d", &quantas_cidades);
+
+
+}
+void cartas(void){
+    int posicao_matriz = 0;
+    char nome_da_cidade [quantas_cidades][50] = {"0", "Acre"};
+    char codigo_da_cidade [quantas_cidades][4] = {"0", "A01"};
+    float populacao [quantas_cidades];
+    float area [quantas_cidades];
+    float pib [quantas_cidades];
+    int numero_de_pontos_turisticos [quantas_cidades];
+    float densidade [quantas_cidades];
+    float per_capita [quantas_cidades];
+
+    for(posicao_matriz=0; posicao_matriz<31; posicao_matriz++){
         printf("Entre com o nome da cidade: \n");
-        fgets(nome_da_cidade[posicao_matriz], 50, stdin);                   // Corrige a entrada com espaço
+        scanf("%s", &nome_da_cidade[posicao_matriz]);
 
         printf("Entre com o codigo da cidade: \n");
-        scanf("%s", codigo_da_cidade[posicao_matriz]);
+        scanf("%s", &codigo_da_cidade[posicao_matriz]);
     
         printf("Entre com a população da cidade em mil habitantes: \n");
         scanf("%f", &populacao[posicao_matriz]);
